@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns: th="http://www.thymeleaf.org">
+    <title th:text="|${actor.getFirstName()} ${actor.getLastName()}|"></title>
+</head>
+<body>
+<div style="width: 100%; max-width: 1000px; margin: 100px auto">
+    <a href="/">Powrot na strone glowna</a>
+    <h2 th:text="|${actor.getFirstName()} ${actor.getLastName()}|"></h2>
+    <b>Data urodzenia:</b>
+    <span th:text="${actor.getDateOfBirth()}"></span><br>
+    <b>Filmografia:</b></br>
+    <ul>
+        <li th:each="movie: ${actor.movies}">
+            <a th:href="|/movie/${movie.id}|" th:text="|${movie.title}|"></a>
+        </li>
+    </ul>
+
+</div>
+</body>
+</html>
