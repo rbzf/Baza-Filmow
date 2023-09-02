@@ -1,7 +1,10 @@
-package pl.as.bazafilmow;
+package pl.as.bazafilmow.movie;
 
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.as.bazafilmow.actor.Actor;
+import pl.as.bazafilmow.movie.Category;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -85,8 +88,4 @@ public class Movie {
                 '}';
     }
 
-    void addActor(Actor actor) {
-        actors.add(actor);
-        actor.addMovie(this);
-    }
 }

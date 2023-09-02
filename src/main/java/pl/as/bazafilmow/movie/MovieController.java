@@ -1,10 +1,11 @@
-package pl.as.bazafilmow;
+package pl.as.bazafilmow.movie;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import pl.as.bazafilmow.actor.Actor;
+import pl.as.bazafilmow.actor.ActorRepository;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,16 +14,14 @@ import java.util.Optional;
 public class MovieController {
     final private MovieRepository movieRepository;
     final private ActorRepository actorRepository;
-    private Optional<Movie> movieById;
 
     public MovieController(MovieRepository movieRepository, ActorRepository actorRepository) {
         this.movieRepository = movieRepository;
         this.actorRepository = actorRepository;
     }
 
-
     @GetMapping("/movie/{id}")
-    public String displayMovies(@PathVariable Long id, Model model) {
+    public String displayMoviesById(@PathVariable Long id, Model model) {
         Optional<Movie> movieOptional = movieRepository.findById(id);
         if (movieOptional.isPresent()) {
             Movie movie = movieOptional.get();
@@ -53,5 +52,23 @@ public class MovieController {
         movieRepository.save(movie);
         return "redirect:/";
     }
+
+    @GetMapping("/deleteMovie/{id}")
+    public String deleteMovie(@PathVariable Long id) {
+        movieRepository.deleteById(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/moviesByCategory/{category}")
+    public String displayMoviesByCategory(@PathVariable Category category, Model model) {
+        List<Movie> moviesByCategory = movieRepository.findByCategory(category);
+        if (!moviesByCategory.isEmpty()) {
+            model.addAttribute("moviesByCategory", moviesByCategory);
+            return "moviesByCategory";
+        } else {
+            return "emptyList";
+        }
+    }
+
 }
 

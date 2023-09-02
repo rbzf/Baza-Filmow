@@ -1,10 +1,13 @@
-package pl.as.bazafilmow;
+package pl.as.bazafilmow.actor;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.as.bazafilmow.movie.Movie;
+import pl.as.bazafilmow.movie.MovieRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,11 +16,9 @@ import java.util.Optional;
 public class ActorController {
     final private ActorRepository actorRepository;
     final private MovieRepository movieRepository;
-    private Optional<Actor> byActorId;
-    private Optional<Movie> byMovieId;
+
 
     public ActorController(ActorRepository actorRepository, MovieRepository movieRepository) {
-
         this.actorRepository = actorRepository;
         this.movieRepository = movieRepository;
     }
@@ -51,6 +52,16 @@ public class ActorController {
     public String addNewActor(Actor actor) {
         actorRepository.save(actor);
         return "redirect:/";
+    }
+    @GetMapping("/deleteActor/{id}")
+    public String deleteActor(@PathVariable Long id) {
+        actorRepository.deleteById(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/addActorToMovie")
+    public String addActor() {
+        return "form_addActorToMovie";
     }
 
 }

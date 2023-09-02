@@ -1,7 +1,8 @@
-package pl.as.bazafilmow;
+package pl.as.bazafilmow.actor;
 
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.as.bazafilmow.movie.Movie;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,16 +17,10 @@ public class Actor {
     private String lastName;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate dateOfBirth;
-    @ManyToMany(mappedBy = "actors")
+    @ManyToMany(mappedBy = "actors", cascade = CascadeType.REMOVE)
     private List<Movie> movies = new ArrayList<>();
 
     public Actor() {
-        }
-    public Actor(Long id, String firstName, String lastName, LocalDate dateOfBirth) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
     }
 
     public Actor(String firstName, String lastName, LocalDate dateOfBirth) {
@@ -84,7 +79,7 @@ public class Actor {
                 '}';
     }
 
-    void addMovie(Movie movie){
+    public void addMovie(Movie movie){
         movies.add(movie);
     }
 

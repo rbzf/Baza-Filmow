@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Baza filmow</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div style="width: 100%; max-width: 1000px; margin: 100px auto">
-    <h2>Co chcesz zrobic:</h2>
+<div class="container">
+<header th:replace="~{joint_fragments::common-header}">tu bedzie naglowek</header>
 
-    <a href="/all_movies">Wyswietl liste wszystkich filmow w bazie</a></br>
-    <a href="/addNewMovie">Dodaj nowy film do bazy</a></br>
-    <a href="/all_actors">Wyswietl liste wszystkich aktorow w bazie</a></br>
-    <a href="/addNewActor">Dodaj nowego aktora do bazy</a>
+    <h2>Filmy wedlug kategorii:</h2>
+    <a th:href="@{/all_movies}">Wszystkie</a>
+    <a th:href="@{/moviesByCategory/COMEDY}">Komedie</a>
+    <a th:href="@{/moviesByCategory/THRILLER}">Thrillery</a>
+    <a th:href="@{/moviesByCategory/DRAMA}">Dramaty</a>
+    <a th:href="@{/moviesByCategory/DOCUMENTARY}">Dokumentalne</a>
+    <a th:href="@{/moviesByCategory/HORROR}">Horrory</a>
+    </br>
+
+
+
+    <h3>Co chcesz zrobic:</h3>
+
+    <a th:href="@{/addNewMovie}">Dodaj nowy film do bazy</a></br>
+    <a th:href="@{/all_actors}">Wyswietl liste wszystkich aktorow w bazie</a></br>
+    <a th:href="@{/addNewActor}">Dodaj nowego aktora do bazy</a>
+
+
+<footer th:replace="~{joint_fragments::common-footer}">tu bedzie stopka</footer>
 </div>
 </body>
 </html>
