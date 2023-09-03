@@ -7,22 +7,26 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 <header th:replace="~{joint_fragments::common-header}">tu bedzie naglowek</header>
 
     <a th:href="@{/}">Powrot na strone glowna</a>
+
     <h2 th:text="|${actor.getFirstName()} ${actor.getLastName()}|"></h2>
     <b>Data urodzenia:</b>
     <span th:text="${actor.getDateOfBirth()}"></span><br>
     <b>Filmografia:</b></br>
-    <ul>
-        <li th:each="movie: ${actor.movies}">
-            <a th:href="@{|/movie/${movie.id}|}" th:text="|${movie.title}|"></a>
+
+    <ul class="list-group" style="width: fit-content">
+        <li class="list-group-item" th:each="movie: ${actor.movies}">
+            <a th:href="@{|/movie/${movie.id}|}" th:text="|${movie.title}|" style="text-decoration:none"></a>
         </li>
     </ul>
-    <a th:href="@{|/deleteActor/${actor.id}|}">Usun aktora z bazy</a>
+    </br>
+    </br>
 
-<footer th:replace="~{joint_fragments::common-footer}">tu bedzie stopka</footer>
+
+<footer th:replace="~{joint_fragments::sticky-footer}">tu bedzie stopka</footer>
 </div>
 </body>
 </html>

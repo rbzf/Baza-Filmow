@@ -7,26 +7,28 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 <header th:replace="~{joint_fragments::common-header}">tu bedzie naglowek</header>
 
-  <a th:href="@{/}">Powrot na strone glowna</a>
+  <a th:href="@{/}" style="text-decoration:none">Powrot na strone glowna</a>
   <h2 th:text="${movie.title}"></h2>
   <b>Data premiery:</b>
   <span th:text="${movie.premiereDate}"></span><br>
   <b>Kategoria:</b>
   <span th:text="${movie.category.displayName}"></span><br>
   <b>Aktorzy:</b>
-  <ul>
-    <li th:each="actor: ${movie.actors}">
-      <a th:href="@{|/actor/${actor.id}|}" th:text="|${actor.firstName} ${actor.lastName}|"></a>
+
+  <ul class="list-group" style="width: fit-content">
+    <li class="list-group-item" th:each="actor: ${movie.actors}">
+      <a th:href="@{|/actor/${actor.id}|}" th:text="|${actor.firstName} ${actor.lastName}|" style="text-decoration:none"></a>
     </li>
   </ul>
-  <a th:href="@{|/deleteMovie/${movie.id}|}">Usun film z bazy</a><br>
-  <a th:href="@{|/addActorToMovie?movieId=${movie.id}|}">Dodaj aktora</a>
+  </br>
+  </br>
+  <a th:href="@{|/deleteMovie/${movie.id}|}" style="text-decoration:none">Usun film z bazy</a><br>
 
-
-<footer th:replace="~{joint_fragments::common-footer}">tu bedzie stopka</footer>
+  <a th:href="@{|/movie/${movie.id}/add-actor|}" style="text-decoration:none">Dodaj aktora</a>
+<footer th:replace="~{joint_fragments::sticky-footer}" style="text-decoration:none">tu bedzie stopka</footer>
 </div>
 </body>
 </html>

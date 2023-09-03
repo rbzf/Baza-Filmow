@@ -7,18 +7,18 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 <header th:replace="~{joint_fragments::common-header}">tu bedzie naglowek</header>
 
-  <a th:href="@{/}">Powrot na strone glowna</a>
+  <a th:href="@{/}" style="text-decoration:none">Powrot na strone glowna</a>
   <h2 th:text="|Lista filmow z kategorii ${moviesByCategory.get(0).category.displayName}|"></h2>
   <ul>
     <li th:each="movie: ${moviesByCategory}">
-      <a th:href="@{|/movie/${movie.getId()}}" th:text="|${movie.title} (${movie.category.displayName})|"></a>
+      <a th:href="@{|/movie/${movie.getId()}}" th:text="|${movie.title} (${movie.category.displayName})|" style="text-decoration:none"></a>
     </li>
   </ul>
 
-<footer th:replace="~{joint_fragments::common-footer}">tu bedzie stopka</footer>
+<footer th:replace="~{joint_fragments::sticky-footer}">tu bedzie stopka</footer>
 </div>
 </body>
 </html>

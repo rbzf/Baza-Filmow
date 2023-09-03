@@ -25,13 +25,6 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(Long id, String title, LocalDate premiereDate, Category category) {
-        this.id = id;
-        this.title = title;
-        this.premiereDate = premiereDate;
-        this.category = category;
-    }
-
     public Movie(String title, LocalDate premiereDate, Category category) {
         this.title = title;
         this.premiereDate = premiereDate;

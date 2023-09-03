@@ -17,16 +17,10 @@ public class Actor {
     private String lastName;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate dateOfBirth;
-    @ManyToMany(mappedBy = "actors", cascade = CascadeType.REMOVE)
+    @ManyToMany(mappedBy = "actors")
     private List<Movie> movies = new ArrayList<>();
 
     public Actor() {
-    }
-
-    public Actor(String firstName, String lastName, LocalDate dateOfBirth) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
     }
 
     public Long getId() {
@@ -77,10 +71,6 @@ public class Actor {
                 ", lastName='" + lastName + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 '}';
-    }
-
-    public void addMovie(Movie movie){
-        movies.add(movie);
     }
 
 }

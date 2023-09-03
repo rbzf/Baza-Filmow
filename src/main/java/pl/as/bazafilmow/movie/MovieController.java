@@ -1,10 +1,8 @@
 package pl.as.bazafilmow.movie;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.as.bazafilmow.actor.Actor;
 import pl.as.bazafilmow.actor.ActorRepository;
 import java.util.List;
 import java.util.Optional;
@@ -68,6 +66,11 @@ public class MovieController {
         } else {
             return "emptyList";
         }
+    }
+
+    @GetMapping("/movie/{movieId}/add-actor")
+    public String editFormAddActorToMovie() {
+        return "form_addActorToMovie";
     }
 
 }

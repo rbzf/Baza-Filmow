@@ -53,11 +53,6 @@ public class ActorController {
         actorRepository.save(actor);
         return "redirect:/";
     }
-    @GetMapping("/deleteActor/{id}")
-    public String deleteActor(@PathVariable Long id) {
-        actorRepository.deleteById(id);
-        return "redirect:/";
-    }
 
     @GetMapping("/addActorToMovie")
     public String addActor() {
