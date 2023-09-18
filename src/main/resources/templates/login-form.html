@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login-form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .container {
+            margin: 0 auto;
+            max-width: 400px;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 32px;
+            align-content: center;
+        }
+        .lock-icon{
+            display: block;
+        }
+        .login-header,
+        .lock-icon {
+            text-align: center;
+        }
+        .form-item {
+            margin: 4px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="login-header">Logowanie uzytkownika</h1>
+    <i class="fa-solid fa-user-lock fa-10x lock-icon"></i>
+    <form action="/login" method="post" class="login-form">
+        <input name="username" placeholder="nazwa uzytkownika" class="form-item">
+        <input name="password" placeholder="haslo" class="form-item">
+        <button class="form-item">Zaloguj sie!</button>
+    </form>
+
+</div>
+</body>
+</html>
